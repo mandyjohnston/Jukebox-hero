@@ -17,7 +17,7 @@ const mainElement = function(albums) {
         imgElement.classList.add("album-image");
         imgElement.src = album.imageUrl;
         imgElement.addEventListener("click", () =>
-        console.log(albumElement(album.title)));
+        albumElement(album));
         divElement.appendChild(imgElement);
 
 
@@ -25,21 +25,21 @@ const mainElement = function(albums) {
         h2Element.classList.add("artist-name");
         h2Element.innerText = album.artistName;
         h2Element.addEventListener("click", () =>
-        alert(albumElement()));
+        albumElement(album));
         divElement.appendChild(h2Element);
 
         const h3Element = document.createElement("h3");
         h3Element.classList.add("album-title");
         h3Element.innerText = album.title;
         h3Element.addEventListener("click", () =>
-        alert(albumElement()));
+        albumElement(album));
         divElement.appendChild(h3Element);
 
         const h4Element = document.createElement("h4");
         h4Element.classList.add("record-label");
         h4Element.innerText = album.recordLabel;
         h4Element.addEventListener("click", () =>
-        alert(`album div clicked, showing ${album.title}'s info`));
+        albumElement(album));
         divElement.appendChild(h4Element);
 
         albumSectionElement.appendChild(divElement);

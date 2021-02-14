@@ -49,6 +49,25 @@ const deleteSong = function (id) {
     .catch((error) => console.log(error));
 };
 
+const addNewAlbum = function () {
+  fetch("http://localhost:8080/api/albums/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      title: title.value,
+      artistName: artistName.value,
+      recordLabel: recordLabel.value,
+      description: description.value,
+      imageUrl: imageUrl.value 
+    }), 
+  })
+    .then((response) => response.json())
+    .then(() => displayHomeView())
+    .catch((error) => console.log(error));
+}
+
 const addCommentToAlbum = function (id) {
 
     fetch("http://localhost:8080/api/albums" + "/" + id + "/" + "comments", {
@@ -88,3 +107,5 @@ export { deleteAlbum };
 export { deleteSong };
 export {addCommentToAlbum};
 export {addCommentToSong};
+export {addSongToAlbum};
+export {addNewAlbum};

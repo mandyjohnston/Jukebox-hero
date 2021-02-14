@@ -80,8 +80,14 @@ const albumElement = function (album) {
   songFormDiv.appendChild(songSubmitButton);
 
   const songSubmitButtonLabel = document.createElement("label");
-  songSubmitButtonLabel.classList.add("son-submit-label");
-  commentSubmitButton.appendChild(songSubmitButtonLabel);
+  songSubmitButtonLabel.classList.add("song-submit-label");
+  songSubmitButton.appendChild(songSubmitButtonLabel);
+
+  songSubmitButton.addEventListener("click", () => {
+    addSongToAlbum(album.id)
+    location.reload();
+    
+});
   
 
 

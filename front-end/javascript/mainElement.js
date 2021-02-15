@@ -1,6 +1,6 @@
 import { albumElement } from "./albumElement.js";
 import { sampleAlbum } from "./sampleAlbum.js";
-import {addNewAlbum} from "./app.js";
+import { addNewAlbum } from "./app.js";
 
 const mainElement = function (albums) {
   const mainElement = document.createElement("main");
@@ -86,10 +86,9 @@ const mainElement = function (albums) {
   addAlbumFormDiv.appendChild(albumSubmitButton);
 
   albumSubmitButton.addEventListener("click", () => {
-    addNewAlbum()
+    addNewAlbum();
     location.reload();
-  })
-
+  });
 
   albums.forEach((album) => {
     const divElement = document.createElement("div");

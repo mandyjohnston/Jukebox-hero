@@ -1,5 +1,5 @@
 import { addCommentToAlbum, deleteAlbum } from "./app.js";
-import {addSongToAlbum} from "./app.js";
+import { addSongToAlbum } from "./app.js";
 import { commentForm } from "./comment.js";
 import { mainElement } from "./mainElement.js";
 import { songElement } from "./songElement.js";
@@ -26,7 +26,6 @@ const albumElement = function (album) {
   h2Element.innerText = album.artistName;
   albumHeaderElement.appendChild(h2Element);
 
-
   //tracklist display
   const trackListing = document.createElement("div");
   trackListing.classList.add("track-listing");
@@ -45,17 +44,17 @@ const albumElement = function (album) {
       songElement(song);
     });
   });
-  
+
   //add song form
   const songFormDiv = document.createElement("div");
-  songFormDiv.classList.add("song-form"); 
+  songFormDiv.classList.add("song-form");
   mainAlbumElement.appendChild(songFormDiv);
   const songForm = document.createElement("form");
   songForm.classList.add("song-form");
-  songForm.setAttribute("method","post");
-  songFormDiv.appendChild(songForm); 
-  
-  const songTitleLabel = document.createElement("label"); 
+  songForm.setAttribute("method", "post");
+  songFormDiv.appendChild(songForm);
+
+  const songTitleLabel = document.createElement("label");
   songTitleLabel.classList.add("song-title-label");
   songTitleLabel.innerText = "Song Title:";
   songFormDiv.appendChild(songTitleLabel);
@@ -63,16 +62,19 @@ const albumElement = function (album) {
   const songTitleInput = document.createElement("input");
   songTitleInput.classList.add("song-title-input");
   songTitleInput.setAttribute("id", "title");
-  songFormDiv.appendChild(songTitleInput); 
+  songFormDiv.appendChild(songTitleInput);
+
+  const songFormBreak = document.createElement("br");
+  songFormDiv.appendChild(songFormBreak);
 
   const songVideoLabel = document.createElement("label");
-  songVideoLabel = classList.add("song-video-label"); 
-  songVideoLabel.innerText = "Song Video (enter URL):"; 
-  songFormDiv.appendChild(songVideoLabel); 
+  songVideoLabel.classList.add("song-video-label");
+  songVideoLabel.innerText = "Song Video (enter URL):";
+  songFormDiv.appendChild(songVideoLabel);
 
-  const songVideoInput = document.createElement("input"); 
-  songVideoInput = classList.add("song-video-input"); 
-  songVideoInput.setAttribute("id", "videoLink"); 
+  const songVideoInput = document.createElement("input");
+  songVideoInput.classList.add("song-video-input");
+  songVideoInput.setAttribute("id", "videoLink");
   songFormDiv.appendChild(songVideoInput);
 
   const songSubmitButton = document.createElement("button");
@@ -85,26 +87,20 @@ const albumElement = function (album) {
   songSubmitButton.appendChild(songSubmitButtonLabel);
 
   songSubmitButton.addEventListener("click", () => {
-    addSongToAlbum(album.id)
-    location.reload();
-    
-});
-  
-
-
-
-
-  //delete button
-  const deleteButton = document.createElement("button");
-  deleteButton.classList.add("delete-button");
-  mainAlbumElement.appendChild(deleteButton);
-  var label = document.createTextNode("Delete Album");
-  deleteButton.appendChild(label);
-  deleteButton.addEventListener("click", () => {
-    deleteAlbum(album.id);
+    addSongToAlbum(album.id);
     location.reload();
   });
 
+  //delete button
+  let deleteAlbumButton = document.createElement("button");
+  deleteAlbumButton.classList.add("delete-album-button");
+  mainAlbumElement.appendChild(deleteAlbumButton);
+  var label = document.createTextNode("Delete Album");
+  deleteAlbumButton.appendChild(label);
+  deleteAlbumButton.addEventListener("click", () => {
+    deleteAlbum(album.id);
+    location.reload();
+  });
 
   //comment form
   let commentFormDiv = document.createElement("div");
@@ -146,15 +142,10 @@ const albumElement = function (album) {
   commentSubmitButton.innerText = "Submit Comment";
   commentFormDiv.appendChild(commentSubmitButton);
 
-  const commentSubmitButtonLabel = document.createElement("label");
-  commentSubmitButtonLabel.classList.add("comment-submit-label");
-  commentSubmitButton.appendChild(commentSubmitButtonLabel);
-
   commentSubmitButton.addEventListener("click", () => {
-      addCommentToAlbum(album.id)
-      location.reload();
+    addCommentToAlbum(album.id);
+    location.reload();
   });
-  
 
   //comment display
   album.comments.forEach((comment) => {
@@ -170,7 +161,6 @@ const albumElement = function (album) {
     commentContent.innerText = comment.body;
     commentDisplay.appendChild(commentContent);
   });
-
 };
 
 const clearChildren = function (element) {
@@ -180,31 +170,3 @@ const clearChildren = function (element) {
 };
 
 export { albumElement };
-
-
-/* <body>
-    <main class="main-album-content">
-    <header class="album-header">
-        <h1 class = "album-title">title</h1>
-        <h2>artistName</h2>
-    </header>
-
-    <div class="track-listing">
-        <a>song array</a>
-    </div>
-
-    <div class="comments">
-        <h3>Average Rating</h3> 
-        <p>star rating</p>
-        <form>comment form</form>
-        <p>comment: author</p>
-        <p>comment: headline</p>
-        <p>comment: description</p>
-    </div>
-    <div class="delete-album">
-        <button>Delete Album</button>
-    </div>
-</main>
-    
-    
-</body> */

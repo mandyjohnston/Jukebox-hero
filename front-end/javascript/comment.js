@@ -1,6 +1,5 @@
-
 const commentForm = function () {
-const commentFormDiv = document.createElement("div");
+  const commentFormDiv = document.createElement("div");
   commentFormDiv.classList.add("comment-form-div");
   mainAlbumElement.appendChild(commentFormDiv);
   const commentForm = document.createElement("form");
@@ -42,6 +41,6 @@ const commentFormDiv = document.createElement("div");
   commentSubmitButton.appendChild(commentSubmitButtonLabel);
 
   return commentFormDiv;
-}
+};
 
-export {commentForm}
+export { commentForm };

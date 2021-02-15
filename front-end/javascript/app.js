@@ -12,10 +12,6 @@ const clearChildren = function (element) {
 let header = createHeader();
 const container = document.querySelector(".container");
 container.prepend(header);
-// const main = mainElement(sampleAlbum);
-// container.appendChild(main);
-// const footer = createFooter();
-// container.appendChild(footer);
 
 const displayHomeView = function (albums) {
   clearChildren(container);
@@ -23,8 +19,6 @@ const displayHomeView = function (albums) {
   container.prepend(header);
   let main = mainElement(albums);
   container.appendChild(main);
-  // footer = createFooter();
-  // container.appendChild(footer);
 };
 
 fetch("http://localhost:8080/api/albums/")
@@ -60,51 +54,47 @@ const addNewAlbum = function () {
       artistName: artistName.value,
       recordLabel: recordLabel.value,
       description: description.value,
-      imageUrl: imageUrl.value 
-    }), 
+      imageUrl: imageUrl.value
+    }),
   })
     .then((response) => response.json())
     .then(() => displayHomeView())
     .catch((error) => console.log(error));
-}
+};
 
 const addCommentToAlbum = function (id) {
-
-    fetch("http://localhost:8080/api/albums" + "/" + id + "/" + "comments", {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-          },
-        body: JSON.stringify({
-            author: author.value,
-            body: body.value
-        }),
-        
-    })
+  fetch("http://localhost:8080/api/albums" + "/" + id + "/" + "comments", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      author: author.value,
+      body: body.value
+    }),
+  })
     .then((response) => response.json())
     .then(() => displayHomeView())
     .catch((error) => console.log(error));
-}
+};
 
 const addCommentToSong = function (id) {
-
-    fetch("http://localhost:8080/api/songs" + "/" + id + "/" + "comments", {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-          },
-        body: JSON.stringify({
-            author: author.value,
-            body: body.value
-        }),
-    })
+  fetch("http://localhost:8080/api/songs" + "/" + id + "/" + "comments", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      author: author.value,
+      body: body.value
+    }),
+  })
     .then((response) => response.json())
     .then(() => displayHomeView())
     .catch((error) => console.log(error));
-}
+};
 
 const addSongToAlbum = function (id) {
-
   fetch("http://localhost:8080/api/albums" + "/" + id + "/" + "songs", {
       method: "PATCH",
       headers: {
@@ -115,14 +105,14 @@ const addSongToAlbum = function (id) {
           videoLink: videoLink.value
       }),
   })
-  .then((response) => response.json())
-  .then(() => displayHomeView())
-  .catch((error) => console.log(error));
-}
+    .then((response) => response.json())
+    .then(() => displayHomeView())
+    .catch((error) => console.log(error));
+};
 
 export { deleteAlbum };
 export { deleteSong };
-export {addCommentToAlbum};
-export {addCommentToSong};
-export {addSongToAlbum};
-export {addNewAlbum};
+export { addCommentToAlbum };
+export { addCommentToSong };
+export { addSongToAlbum };
+export { addNewAlbum };

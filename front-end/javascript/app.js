@@ -103,6 +103,23 @@ const addCommentToSong = function (id) {
     .catch((error) => console.log(error));
 }
 
+const addSongToAlbum = function (id) {
+
+  fetch("http://localhost:8080/api/albums" + "/" + id + "/" + "songs", {
+      method: "PATCH",
+      headers: {
+          "Content-Type": "application/json",
+        },
+      body: JSON.stringify({
+          title: title.value,
+          videoLink: videoLink.value
+      }),
+  })
+  .then((response) => response.json())
+  .then(() => displayHomeView())
+  .catch((error) => console.log(error));
+}
+
 export { deleteAlbum };
 export { deleteSong };
 export {addCommentToAlbum};

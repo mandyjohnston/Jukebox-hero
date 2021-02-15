@@ -1,4 +1,5 @@
 import { addCommentToAlbum, deleteAlbum } from "./app.js";
+import {addSongToAlbum} from "./app.js";
 import { commentForm } from "./comment.js";
 import { mainElement } from "./mainElement.js";
 import { songElement } from "./songElement.js";

@@ -45,6 +45,17 @@ const albumElement = function (album) {
     });
   });
 
+  //delete button
+  let deleteAlbumButton = document.createElement("button");
+  deleteAlbumButton.classList.add("delete-album-button");
+  mainAlbumElement.appendChild(deleteAlbumButton);
+  var label = document.createTextNode("Delete Album");
+  deleteAlbumButton.appendChild(label);
+  deleteAlbumButton.addEventListener("click", () => {
+    deleteAlbum(album.id);
+    location.reload();
+  });
+
   //add song form
   const songFormDiv = document.createElement("div");
   songFormDiv.classList.add("song-form");
@@ -77,6 +88,9 @@ const albumElement = function (album) {
   songVideoInput.setAttribute("id", "videoLink");
   songFormDiv.appendChild(songVideoInput);
 
+  const songFormBreak1 = document.createElement("br");
+  songFormDiv.appendChild(songFormBreak1);
+
   const songSubmitButton = document.createElement("button");
   songSubmitButton.classList.add("song-submit-button");
   songSubmitButton.innerText = "Submit Song";
@@ -88,17 +102,6 @@ const albumElement = function (album) {
 
   songSubmitButton.addEventListener("click", () => {
     addSongToAlbum(album.id);
-    location.reload();
-  });
-
-  //delete button
-  let deleteAlbumButton = document.createElement("button");
-  deleteAlbumButton.classList.add("delete-album-button");
-  mainAlbumElement.appendChild(deleteAlbumButton);
-  var label = document.createTextNode("Delete Album");
-  deleteAlbumButton.appendChild(label);
-  deleteAlbumButton.addEventListener("click", () => {
-    deleteAlbum(album.id);
     location.reload();
   });
 

@@ -1,11 +1,27 @@
-/* .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.container {
+  height: max-content;
 }
-header {
-    display: grid;
-    grid-column: 1 / span 3;
+.album-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-.main-album-content {
-    display: flex;
-} */
+.album-form {
+  flex-direction: row;
+}
+.song-form {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.album-image {
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.main-header {
+  text-align: center;
+  background-color: lightgrey;
+}

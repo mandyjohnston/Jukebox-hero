@@ -56,6 +56,9 @@ const mainElement = function (albums) {
   recordLabelInput.setAttribute("id", "recordLabel");
   addAlbumFormDiv.appendChild(recordLabelInput);
 
+  const albumFormBreak5 = document.createElement("br");
+  addAlbumFormDiv.appendChild(albumFormBreak5);
+
   const descriptionLabel = document.createElement("label");
   descriptionLabel.classList.add("description-label");
   descriptionLabel.innerText = "Description:";

@@ -1,0 +1,27 @@
+.container {
+  height: max-content;
+}
+.album-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.album-form {
+  flex-direction: row;
+}
+.song-form {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.album-image {
+  height: 300px;
+  width: 300px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.main-header {
+  text-align: center;
+  background-color: lightgrey;
+}
